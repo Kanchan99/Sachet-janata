@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+<style>
+.tdStyle
+{
+background-image:url('{{ STATIC_URL }}images.jpeg');
+background-repeat:no-repeat;
+background-size:100%;
+}
+</style>
+
+<p>Hello {{ request.user.username }},</p>
+
+<!-- <a href="https://docs.google.com/forms/d/1anCfObPLD9xwwOMM_xIUV4fHcqxb2RCdzlRq8fa7Dlo/edit"></a> -->
+<!-- <body background="/home/sonika/Desktop/images.pneg"></body> -->
+
+<style>
+body {
+    font-family: Arial;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+
+form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+form.example button:hover {
+    background: #0b7dda;
+}
+
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+</style>
+</head>
+<body>
+{% block container %}
+<h2>Search City</h2>
+
+<form class="example" action="{% url 'search' %}">	
+
+  <input type="text" placeholder="Search.." name="srh">
+ <button type="submit"><i class="fa fa-search"></i></button>
+
+</form>
+<div>
+	{% if messages %}
+	<ul class="messages">
+	{% for k in messages %}
+	<li style="color:blue"> {{ k }}</li>
+	{% endfor %}
+	</ul>
+	{% endif %}
+</div>
+<div><br>
+<div style ="color:blue">
+{% if sr %}
+	{% for k in sr %}
+	<table border="0px" width="300px">
+	<tr>
+		<td>Name</td>
+		<td>{{ k.name }}</td>
+	</tr>
+	<tr>
+		<td>State</td>
+		<td>{{ k.state }}</td>
+	</tr>
+	<tr>
+		<td>Governor</td>
+		<td>{{ k.governor }}</td>
+	</tr>
+{% endfor %}
+{% endif %}
+
+
+</body>
+</html> 
+
+
+{% endblock container %}
