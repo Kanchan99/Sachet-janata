@@ -28,12 +28,12 @@ EVENT_ON=(
 
 class City (models.Model):
 	name= models.CharField(max_length= 20, choices= CITY)
- 	state=models.CharField(max_length=20, unique= True, choices= STATE)
- 	governor=models.CharField(max_length=30)
+	state=models.CharField(max_length=20, unique= True, choices= STATE)
+	governor=models.CharField(max_length=30)
 
 
- 	def __str__(self):
- 		return'{},{},{}'.format(self.name, self.state, self.governor)
+	def __str__(self):
+			return'{},{},{}'.format(self.name, self.state, self.governor)
 
 
 class Events(models.Model):
